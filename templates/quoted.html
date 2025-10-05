@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+
+{% block title %}
+  Quote Results
+{% endblock %}
+
+{% block main %}
+  {% if stock %}
+    <h2>{{ stock.symbol }} Quote</h2>
+    <ul>
+      <li>Company: {{ stock.name }}</li>
+      <li>Price: ${{ stock.price }}</li>
+    </ul>
+  {% else %}
+    <p>No quote data available.</p>
+  {% endif %}
+  </main>
+{% endblock %}
