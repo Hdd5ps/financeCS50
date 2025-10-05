@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+
+{% block title %}
+  Portfolio
+{% endblock %}
+
+{% block main %}
+  {% if confirmation_message %}
+    <header>
+      <div class="alert alert-primary mb-0 text-center" role="alert">
+        {{ confirmation_message }}
+      </div>
+    </header>
+  {% endif %}
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th class="text-start">Symbol</th>
+        <th class="text-end">Shares</th>
+        <th class="text-end">Price</th>
+        <th class="text-end">TOTAL</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in portfolio_items %}
+      <tr>
+        <td class="text-start">{{ item.symbol }}</td>
+        <td class="text-end">{{ item.shares }}</td>
+        <td class="text-end">${{ item.price }}</td>
+        <td class="text-end">${{ item.total }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+    <tfoot>
+      <tr>
+        <td class="border-0 fw-bold text-end" colspan="3">Cash</td>
+        <td class="border-0 text-end">${{ cash_balance }}</td>
+      </tr>
+      <tr>
+        <td class="border-0 fw-bold text-end" colspan="3">TOTAL</td>
+        <td class="border-0 w-bold text-end">${{ total_value }}</td>
+      </tr>
+    </tfoot>
+  </table>
+  </main>
+{% endblock %}
